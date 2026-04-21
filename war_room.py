@@ -85,7 +85,14 @@ if api_key:
                         """
                         
                         # Generate the image using Gemini (calls Imagen 3)
-                        generated_image = model.generate_content(image_prompt)
+                        # Using the standard 2026 image generation method
+response = model.generate_content(
+    image_prompt,
+    generation_config={"response_mime_type": "image/png"}
+)
+# Get the image data from the response
+image_data = response.candidates[0].content.parts[0].inline_data.data
+
 
                         # Check if generation worked and display the result
                         if generated_image.images:
