@@ -85,7 +85,7 @@ if api_key:
                         """
                         
                         # Generate the image using Gemini (calls Imagen 3)
-                        generated_image = model.generate_content(prompt=image_prompt)
+                        generated_image = model.generate_content(image_prompt)
 
                         # Check if generation worked and display the result
                         if generated_image.images:
